@@ -1,0 +1,39 @@
+The “UserController” class gets an instance of “userRepository” through its constructor; how 
+is this new repository instantiated?
+	
+	- Spring manages the instantiation and configuration of beans, including the UserRepository, and automatically (@Autowired) injects them into other beans that require 	them, like the UserController. This is one of the key benefits of using a dependency injection framework like Spring.
+
+
+
+List the methods invoked in the “userRepository” object by the “UserController”. Where are 
+these methods defined?
+
+	- userRepository.save(user): This method is used in the addUser method of the UserController. It is responsible for saving a User object to the database.
+
+	- userRepository.findAll(): This method is used in the showUserList method of the UserController. It retrieves all User objects from the database.
+
+	- userRepository.findById(id): This method is used in the showUpdateForm, updateUser, and deleteUser methods of the UserController. It retrieves a User object by its 	ID from the database.
+
+	- userRepository.delete(user): This method is used in the deleteUser method of the UserController. It deletes a specific User object from the database.
+
+
+	Here's a brief description of these methods:
+
+		- save(T entity): Saves an entity to the database. If the entity already exists, it updates it; otherwise, it creates a new record.
+
+		- findAll(): Retrieves all entities of a particular type from the database.
+
+		- findById(ID id): Retrieves an entity by its ID.
+
+		- delete(T entity): Deletes a specific entity from the database.
+
+
+
+
+Where is the data being saved?
+
+	- The data is being saved to a database. Spring Boot typically uses an embedded database like H2, HSQLDB, or an in-memory database for development purposes while providing a high-level API for interacting with the database, making it easier to focus on application logic rather than low-level database operations. 
+
+
+
+Where is the rule for the “not empty” email address defined? The rule for the "not empty" email address is defined in the User entity class using the @NotBlank annotation.
